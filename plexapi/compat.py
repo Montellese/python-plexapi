@@ -39,10 +39,12 @@ try:
 except ImportError:
     from ConfigParser import ConfigParser
 
-try:
-    from xml.etree import cElementTree as ElementTree
-except ImportError:
-    from xml.etree import ElementTree
+# Montellese: cElementTree is not reliable in Kodi
+# try:
+#     from xml.etree import cElementTree as ElementTree
+# except ImportError:
+#     from xml.etree import ElementTree
+from xml.etree import ElementTree
 
 # Montellese: not needed
 # try:
