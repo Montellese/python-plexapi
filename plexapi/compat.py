@@ -44,10 +44,11 @@ try:
 except ImportError:
     from xml.etree import ElementTree
 
-try:
-    from unittest.mock import patch, MagicMock
-except ImportError:
-    from mock import patch, MagicMock
+# Montellese: not needed
+# try:
+#     from unittest.mock import patch, MagicMock
+# except ImportError:
+#     from mock import patch, MagicMock
 
 
 def makedirs(name, mode=0o777, exist_ok=False):
