@@ -52,6 +52,22 @@ from xml.etree import ElementTree
 # except ImportError:
 #     from mock import patch, MagicMock
 
+# Montellese: Kodi specific problem, see https://forum.kodi.tv/showthread.php?tid=112916&pid=2890924#pid2890924
+import datetime
+
+#fix for datatetime.strptime returns None
+class proxydt(datetime.datetime):
+    def __init__(self, *args, **kwargs):
+        super(proxydt, self).__init__(*args, **kwargs)
+
+    @classmethod
+    def strptime(cls, date_string, format):
+        import time
+        return datetime(*(time.strptime(date_string, format)[0:6]))
+
+datetime.datetime = proxydt
+from datetime import datetime
+
 
 def makedirs(name, mode=0o777, exist_ok=False):
     """ Mimicks os.makedirs() from Python 3. """
